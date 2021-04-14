@@ -1,0 +1,19 @@
+.TH auth::cleanup 3 "29 Jan 2021" "pyopenTIDAL 1.0.0" "pyopenTIDAL Manual"
+.SH NAME
+auth::cleanup \- Deallocate a container from heap 
+.SH SYNOPSIS
+.B import openTIDAL
+
+.nf
+.BI "class session (" object "):"
+.BI "    def cleanup (" self ", " content ")"
+.fi
+.SH DESCRIPTION
+After using a OTContainer returned from a service function one needs to deallocate it.
+Up to this point values inside the container are still allocated in heap. The container itself
+is also allocated in heap and needs to be freed.
+.SH RETURN VALUE
+None
+.SH "SEE ALSO" 
+.BR auth::getDeviceCode "(3), " auth::getBearerToken "(3), " auth::logout "(3), "
+.BR auth::refreshBearerToken "(3), " session::init "(3), " session::login "(3) "

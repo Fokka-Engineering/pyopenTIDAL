@@ -1,0 +1,27 @@
+.TH session::login 3 "29 Jan 2021" "pyopenTIDAL 1.0.0" "pyopenTIDAL Manual"
+.SH NAME
+session::login \- Loads a persistent config file 
+.SH SYNOPSIS
+.B import openTIDAL
+
+.nf
+.BI "class session (" object "):"
+.BI "    def login (" self ", " location ")"
+.fi
+.SH DESCRIPTION
+Specify the location of the \fBlibopenTIDAL\fP(3) persistent session configuration
+file. The persistent session config stores the oAuth2.0 refresh- and access-token,
+the user-id and other important configuration values.
+It should be stored in a secure location. Read and write permissions are needed.
+
+If successful, http requests will use the parsed accessToken and keep
+track of the renewal-process.
+The user has now access to user-based service endpoints.
+
+.SH "EXCEPTION"
+This function throws an exception if the read/parse operation fails.
+.SH RETURN VALUE
+None
+.SH "SEE ALSO"
+.BR session::getHandle "(3), " session::clientPair "(3), " session::verbose "(3), "
+.BR session::changeQuality "(3), " session::writeChanges "(3), " session::manualRefresh "(3) "

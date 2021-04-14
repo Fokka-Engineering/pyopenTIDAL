@@ -1,0 +1,21 @@
+.TH session::manualRefresh 3 "29 Jan 2021" "pyopenTIDAL 1.0.0" "pyopenTIDAL Manual"
+.SH NAME
+session::manualRefresh \- Request a manual session renewal
+.SH SYNOPSIS
+.B import openTIDAL
+
+.nf
+.BI "class session (" object "):"
+.BI "    def manualRefresh (" self ")"
+.fi
+.SH DESCRIPTION
+Call this function to manually trigger an session renewal. This can be useful if a service function returns EXPIRED_SESSION
+in the main thread.
+
+This only occurs if the internal call fails.
+The internal refresh call is not likely to fail.
+.SH RETURN VALUE
+None
+.SH "SEE ALSO"
+.BR session::login "(3), " session::getHandle "(3), " session::verbose "(3), "
+.BR session::changeQuality "(3), " session::writeChanges "(3), " session::clientPair "(3) "

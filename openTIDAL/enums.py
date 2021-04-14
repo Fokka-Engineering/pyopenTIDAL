@@ -1,0 +1,32 @@
+from openTIDAL import lib, ffi
+from enum import IntEnum
+
+class status (IntEnum):
+    SUCCESS = 0
+    CURL_NOT_OK = 1
+    BAD_REQUEST = 2
+    UNAUTHORISED = 3
+    EXPIRED_SESSION = 4
+    ARTEFACT_NOT_FOUND = 5
+    ASSET_NOT_READY_FOR_PLAYBACK = 6
+    PRECONDITION_FAILED = 7
+    REDIRECT = 8
+    CLIENT_ERROR = 9
+    SERVER_ERROR = 10
+    MALLOC_ERROR = 11
+    UNKNOWN_MANIFEST_MIMETYPE = 12
+    UNKNOWN = 13
+
+class quality (IntEnum):
+    AUDIO_LOW = 0
+    AUDIO_HIGH = 1
+    AUDIO_LOSSLESS = 2
+    AUDIO_HI_RES = 3
+    VIDEO_AUDIO_ONLY = 4
+    VIDEO_LOW = 5
+    VIDEO_MEDIUM = 6
+    VIDEO_HIGH = 7
+
+class types(IntEnum):
+    CONTENT_CONTAINER = 1
+    CONTENT_STREAM_CONTAINER = 2

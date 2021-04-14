@@ -1,0 +1,33 @@
+.TH auth::getBearerToken 3 "29 Jan 2021" "pyopenTIDAL 1.0.0" "pyopenTIDAL Manual"
+.SH NAME
+auth::getBearerToken \- Request an access- and refresh-token 
+.SH SYNOPSIS
+.B import openTIDAL
+
+.nf
+.BI "class session (" object "):"
+.BI "    def getBearerToken (" self ", " session ", " deviceCode ", " threadHandle ")"
+.fi
+.SH DESCRIPTION
+While the application is waiting for the user to complete the authorization flow
+\fIauth::getDeviceCode(3)\fP in their browser,
+the device/application meanwhile begins polling \fIauth::getBearerToken(3)\fP
+to request an access token.
+
+The application makes a POST request with the deviceCode at the rate specified by interval.
+The device should continue requesting an access token until the status in the OTContentContainer
+is SUCCESS. Remember to deallocate the OTContentContainer after each polling-cycle.
+
+.nf
+.B Thread Handle
+.fi
+You must never share the same handle in multiple threads. You can pass the handles around among threads, but you must never use a single handle from more than one thread at any given time.
+
+Use the session main handle by parsing a NULL pointer.
+.SH RETURN VALUE
+If no memory allocation error occurred in allocating the content container, a
+pointer will be returned.
+Otherwise, an exception is thrown.
+.SH "SEE ALSO"
+.BR auth::cleanup "(3), " auth::getDeviceCode "(3), " auth::logout "(3), "
+.BR auth::refreshBearerToken "(3), " session::login "(3), " session::getHandle "(3) "

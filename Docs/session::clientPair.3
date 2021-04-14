@@ -1,0 +1,29 @@
+.TH session::clientPair 3 "29 Jan 2021" "pyopenTIDAL 1.0.0" "pyopenTIDAL Manual"
+.SH NAME
+session::clientPair \- Specify the OAuth2 clientId and clientSecret
+.SH SYNOPSIS
+.B import openTIDAL
+
+.nf
+.BI "class session (" object "):"
+.BI "    def clientPair (" self ", " clientId ", " clientSecret ")"
+.fi
+.SH DESCRIPTION
+\fBlibopenTIDAL\fP(3) uses TIDALs OAuth2 authorisation service to authenticate with the TIDAL API.
+For this to work you need a clientId and a clientSecret. 
+
+\fBNote: The clientSecret is only required if one
+plans to use the auth and user-based services.\fP
+
+The device authorisation grant is not enabled in all clientIds. You need a clientId/clientSecret pair that
+was generated to be used in restricted-input or browserless devices/applications.
+Standard webflow pairs will throw an error.
+
+Features like preview track/video streams are only available in the restrictedMode with the web clientId/clientSecret pair.
+.SH "EXCEPTION"
+This function throws an exception if the memory allocation of the strings fail.
+.SH RETURN VALUE
+None
+.SH "SEE ALSO"
+.BR session::login "(3), " session::getHandle "(3), " session::verbose "(3), "
+.BR session::changeQuality "(3), " session::writeChanges "(3), " session::manualRefresh "(3) "

@@ -1,0 +1,32 @@
+.TH session::createConfig 3 "29 Jan 2021" "pyopenTIDAL 1.0.0" "pyopenTIDAL Manual"
+.SH NAME
+session::createConfig \- Create a persistent configuration file 
+.SH SYNOPSIS
+.B import openTIDAL
+
+.nf
+.BI "class session (" object "):"
+.BI "    def createConfig (" self ", " location ")"
+.fi
+.SH DESCRIPTION
+After a successful authentication with the oAuth device authorisation grant
+(RFC 8628), call this function to create the persistent configuration file.
+See \fIauth::getDeviceCode(3)\fP and \fIauth::getBearerToken(3)\fP
+for login polling examples.
+
+\fIsession::createConfig(3)\fP allocates a stream of the newly created json
+session configuration and writes it to the specified file location
+parameter.
+
+Do not store any additional values inside the configuration file!
+\fBlibopenTIDAL\fP(3) overwrites the configuration file after a successful session
+oAuth access token renewal.
+
+This function is only available if a file location was specified prior.
+.SH "EXCEPTION"
+This function throws an exception if the write/parse operation fails. 
+.SH RETURN VALUE
+None
+.SH "SEE ALSO"
+.BR session::login "(3), " session::getHandle "(3), " session::cleanup "(3), "
+.BR session::changeQuality "(3), " session::writeChanges "(3), " session::manualRefresh "(3) "

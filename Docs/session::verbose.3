@@ -1,0 +1,18 @@
+.TH session::verbose 3 "29 Jan 2021" "pyopenTIDAL 1.0.0" "pyopenTIDAL Manual"
+.SH NAME
+session::verbose \- Enable the verbose mode
+.SH SYNOPSIS
+.B import openTIDAL
+
+.BI "class session (" object "):"
+.BI "    def verbose (" self ", " enabled ")"
+.SH DESCRIPTION
+Toggle \fBopenTIDAL\fP(3)'s verbose feature.
+This enables libcurl CURLOPT_VERBOSE and the internal
+verbose printf calls.
+\fBopenTIDAL\fP(3) prints to stdout.
+.SH RETURN VALUE
+None
+.SH "SEE ALSO"
+.BR session::login "(3), " session::getHandle "(3), " session::clientPair "(3), "
+.BR session::changeQuality "(3), " session::writeChanges "(3), " session::manualRefresh "(3) "
