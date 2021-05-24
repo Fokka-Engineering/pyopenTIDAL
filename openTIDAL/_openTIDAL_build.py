@@ -3,8 +3,8 @@ import glob
 ffibuilder = FFI()
 
 header_file = "openTIDAL/api.processed.h"
-source_files = glob.glob("openTIDAL/Source/*.c")
-source_files_service = glob.glob("openTIDAL/Source/OTService/*.c")
+source_files = glob.glob("openTIDAL/libopenTIDAL/Source/*.c")
+source_files_service = glob.glob("openTIDAL/libopenTIDAL/Source/OTService/*.c")
 
 for i in source_files_service:
     source_files.append(i)

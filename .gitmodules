@@ -1,0 +1,6 @@
+[submodule "libopenTIDAL"]
+    path = openTIDAL/libopenTIDAL
+    url = https://github.com/Fokka-Engineering/libopenTIDAL
+[submodule "openTIDAL/libopenTIDAL"]
+	path = openTIDAL/libopenTIDAL
+	url = https://github.com/Fokka-Engineering/libopenTIDAL
