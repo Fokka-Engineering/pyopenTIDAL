@@ -7,7 +7,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 setuptools.setup(
 	name = "openTIDAL",
-	version = "1.0.0",
+	version = "1.0.1",
 	license = "MIT",
 	description = "Python Wrapper for libopenTIDAL",
 	author = "DerNuntius",

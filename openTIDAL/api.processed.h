@@ -45,8 +45,6 @@ struct OTSessionContainer
     char *clientId;
     char *previewClientId;
     char *clientSecret;
-    char *x;
-    char *y;
     char *scopes;
     char *baseUrl;
     char *authUrl;
@@ -85,13 +83,15 @@ struct OTSessionContainer *OTSessionInit (void);
 int OTSessionClientPair (struct OTSessionContainer *const session, const char *const clientId,
                          const char *const clientSecret);
 int OTSessionLogin (struct OTSessionContainer *const session, const char *const location);
+/* disabled = 0, enabled = 1, debug = 2 */
 void OTSessionVerbose (struct OTSessionContainer *const session, const int enabled);
 void OTSessionChangeQuality (struct OTSessionContainer *const session, enum OTQuality quality);
 int OTSessionWriteChanges (const struct OTSessionContainer *session);
 enum OTStatus OTSessionRefresh (struct OTSessionContainer *session);
 void OTSessionCleanup (struct OTSessionContainer *session);
 
-int OTPersistentCreate (const struct OTSessionContainer *const session, const char *const location);
+int OTPersistentCreate (const struct OTSessionContainer *const session,
+                        const char *const location);
 void OTDeallocContainer (void *container, enum OTTypes type);
 
 /* Create a http handle. Use one handle per thread.
@@ -123,9 +123,10 @@ enum OTStatus OTServiceLogout (struct OTSessionContainer *session, void *threadH
  * playlists (NULL, "items", "recommendations/items")
  * mixes (items) */
 struct OTContentContainer *OTServiceGetStandard (struct OTSessionContainer *session,
-                                                 const char *const prefix, const char *const suffix,
-                                                 const char *const id, const int limit,
-                                                 const int offset, void *threadHandle);
+                                                 const char *const prefix,
+                                                 const char *const suffix, const char *const id,
+                                                 const int limit, const int offset,
+                                                 void *threadHandle);
 /* Favorite service.
  * (Suffixes: "ids", "albums", "tracks", "videos", "artists", "playlists", "mixes") */
 struct OTContentContainer *OTServiceGetFavorites (struct OTSessionContainer *session,
@@ -137,55 +138,65 @@ struct OTContentContainer *OTServiceGetFavorites (struct OTSessionContainer *ses
  * Id parameter only used if suffix ("album", "artist", "mix") */
 struct OTContentContainer *OTServiceGetPage (struct OTSessionContainer *session,
                                              const char *const suffix, const char *const id,
-                                             const int limit, const int offset, void *threadHandle);
+                                             const int limit, const int offset,
+                                             void *threadHandle);
 /* Search service.
- * (Suffixes: NULL (ALL), "albums", "tracks", "videos", "artists", "playlists", "topHit") */
+ * (Suffixes: NULL (ALL), "albums", "tracks", "videos", "artists", "playlists", "top-hits") */
 struct OTContentContainer *OTServiceSearch (struct OTSessionContainer *session,
-                                            const char *const suffix, char *query, const int limit,
-                                            const int offset, void *threadHandle);
+                                            const char *const suffix, char *query,
+                                            const int limit, const int offset,
+                                            void *threadHandle);
 /* Stream service.
  * Prefixes: "tracks", "videos" */
 struct OTContentStreamContainer *OTServiceGetStream (struct OTSessionContainer *session,
-                                                     const char *const prefix, const char *const id,
-                                                     const int isPreview, void *threadHandle);
+                                                     const char *const prefix,
+                                                     const char *const id, const int isPreview,
+                                                     void *threadHandle);
 
 /* Playlist manipulation service. */
-struct OTContentContainer *OTServiceCreatePlaylist (struct OTSessionContainer *session, char *title,
-                                                    char *description, void *threadHandle);
+struct OTContentContainer *OTServiceCreatePlaylist (struct OTSessionContainer *session,
+                                                    char *title, char *description,
+                                                    void *threadHandle);
 /* HTTP entity-tag is used for playlist concurrency control. */
 char *OTServiceGetPlaylistEntityTag (struct OTSessionContainer *session, const char *const id,
                                      void *threadHandle);
-enum OTStatus OTServiceDeletePlaylistItem (struct OTSessionContainer *session, const char *const id,
-                                           const int index, void *threadHandle);
-enum OTStatus OTServiceMovePlaylistItem (struct OTSessionContainer *session, const char *const id,
-                                         const int index, const int toIndex, void *threadHandle);
+enum OTStatus OTServiceDeletePlaylistItem (struct OTSessionContainer *session,
+                                           const char *const id, const int index,
+                                           void *threadHandle);
+enum OTStatus OTServiceMovePlaylistItem (struct OTSessionContainer *session,
+                                         const char *const id, const int index,
+                                         const int toIndex, void *threadHandle);
 /* OnDupes: "FAIL", "SKIP", "ADD". OnArtifactNotFound: "FAIL", "SKIP". */
-enum OTStatus OTServiceAddPlaylistItem (struct OTSessionContainer *session, const char *const id,
-                                        const char *itemId, const char *onArtifactNotFound,
-                                        const char *onDupes, void *threadHandle);
+enum OTStatus OTServiceAddPlaylistItem (struct OTSessionContainer *session,
+                                        const char *const id, const char *itemId,
+                                        const char *onArtifactNotFound, const char *onDupes,
+                                        void *threadHandle);
 /* Parse an array of ids and the arraysize. */
-enum OTStatus OTServiceAddPlaylistItems (struct OTSessionContainer *session, const char *const id,
-                                         const char **itemIds, const int size,
-                                         const char *onArtifactNotFound, const char *onDupes,
-                                         void *threadHandle);
+enum OTStatus OTServiceAddPlaylistItems (struct OTSessionContainer *session,
+                                         const char *const id, const char **itemIds,
+                                         const int size, const char *onArtifactNotFound,
+                                         const char *onDupes, void *threadHandle);
 
 /* Favorite manipulation service. */
-enum OTStatus OTServiceDeleteFavorite (struct OTSessionContainer *session, const char *const suffix,
-                                       const char *const id, void *threadHandle);
-enum OTStatus OTServiceAddFavorite (struct OTSessionContainer *session, const char *const suffix,
-                                    const char *itemId, const char *onArtifactNotFound,
-                                    void *threadHandle);
-enum OTStatus OTServiceAddFavorites (struct OTSessionContainer *session, const char *const suffix,
-                                     const char **itemIds, const int size,
-                                     const char *onArtifactNotFound, void *threadHandle);
+enum OTStatus OTServiceDeleteFavorite (struct OTSessionContainer *session,
+                                       const char *const suffix, const char *const id,
+                                       void *threadHandle);
+enum OTStatus OTServiceAddFavorite (struct OTSessionContainer *session,
+                                    const char *const suffix, const char *itemId,
+                                    const char *onArtifactNotFound, void *threadHandle);
+enum OTStatus OTServiceAddFavorites (struct OTSessionContainer *session,
+                                     const char *const suffix, const char **itemIds,
+                                     const int size, const char *onArtifactNotFound,
+                                     void *threadHandle);
 /* Feed activity service. */
 struct OTContentContainer *OTServiceGetFeedActivities (struct OTSessionContainer *session,
                                                        void *threadHandle);
 /* Check for new unseen activity. */
-struct OTContentContainer *OTServiceGetFeedActivityUnseenExists (struct OTSessionContainer *session,
-                                                                 void *threadHandle);
+struct OTContentContainer *
+OTServiceGetFeedActivityUnseenExists (struct OTSessionContainer *session, void *threadHandle);
 /* Mark unseen activity as seen. */
-enum OTStatus OTServiceFeedActivitySeen (struct OTSessionContainer *session, void *threadHandle);
+enum OTStatus OTServiceFeedActivitySeen (struct OTSessionContainer *session,
+                                         void *threadHandle);
 
 /* SECTION: OTJson parsing. */
 /* Returns the number of items in an array (or object). */
@@ -195,7 +206,6 @@ struct OTJsonContainer *OTJsonGetArrayItem (const struct OTJsonContainer *array,
 struct OTJsonContainer *OTJsonGetObjectItem (const struct OTJsonContainer *const object,
                                              const char *const string);
 int OTJsonHasObjectItem (const struct OTJsonContainer *object, const char *string);
-
 
 /* Check item type and return its value. */
 char *OTJsonGetStringValue (const struct OTJsonContainer *const item);
@@ -246,3 +256,5 @@ struct OTJsonContainer
      * object. */
     char *string;
 };
+
+
