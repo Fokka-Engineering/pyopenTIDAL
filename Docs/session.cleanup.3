@@ -1,6 +1,6 @@
-.TH session::cleanup 3 "29 Jan 2021" "pyopenTIDAL 1.0.0" "pyopenTIDAL Manual"
+.TH session.cleanup 3 "29 Jan 2021" "pyopenTIDAL 1.0.1" "pyopenTIDAL Manual"
 .SH NAME
-session::cleanup \- End a libopenTIDAL session handle 
+session.cleanup \- End a libopenTIDAL session handle 
 .SH SYNOPSIS
 .B import openTIDAL
 
@@ -18,10 +18,10 @@ Do not call this function if you intend to call more \fBlibopenTIDAL\fP(3) servi
 functions.
 
 Any use of the session or the \fBlibopenTIDAL\fP(3) service functions without
-reinitialising is illegal. \fIsession::cleanup(3)\fP deallocates all memory
+reinitialising is illegal. \fIsession.cleanup(3)\fP deallocates all memory
 associated with the session and kills the curl handle.
 .SH RETURN VALUE
 None
 .SH "SEE ALSO"
-.BR session::login "(3), " session::clientPair "(3), " session::verbose "(3), "
-.BR session::changeQuality "(3), " session::writeChanges "(3), " session::manualRefresh "(3) "
+.BR session.login "(3), " session.clientPair "(3), " session.verbose "(3), "
+.BR session.changeQuality "(3), " session.writeChanges "(3), " session.manualRefresh "(3) "

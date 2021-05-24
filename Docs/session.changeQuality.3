@@ -1,0 +1,20 @@
+.TH session.changeQuality 3 "29 Jan 2021" "pyopenTIDAL 1.0.1" "pyopenTIDAL Manual"
+.SH NAME
+session.changeQuality \- Change the streaming quality
+.SH SYNOPSIS
+.B import openTIDAL
+
+.nf
+.BI "class session (" object "):"
+.BI "    def changeQuality (" self ", " quality ")"
+.fi
+.SH DESCRIPTION
+Change the audio/video streaming quality using predefined enums.
+Available quality enums: \fIquality(7)\fP. 
+ 
+This change is only valid for this session, except you write the changes to the persistent config \fIsession.writeChanges(3)\fP.
+.SH RETURN VALUE
+None
+.SH "SEE ALSO"
+.BR session.login "(3), " session.getHandle "(3), " session.verbose "(3), "
+.BR session.clientPair "(3), " session.writeChanges "(3), " session.manualRefresh "(3) "

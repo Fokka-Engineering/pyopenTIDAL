@@ -1,0 +1,23 @@
+.TH session.writeChanges 3 "29 Jan 2021" "pyopenTIDAL 1.0.1" "pyopenTIDAL Manual"
+.SH NAME
+session.writeChanges \- Write session changes to the persistent config
+.SH SYNOPSIS
+.B import openTIDAL
+
+.nf
+.BI "class session (" object "):"
+.BI "    def writeChanges (" self ")"
+.fi
+.SH DESCRIPTION
+If one makes changes to the \fBlibopenTIDAL\fP(3) session handle and its allocated structure itself, calling the
+\fIsession.writeChanges(3)\fP function will make these changes persistent. 
+
+\fBlibopenTIDAL\fP(3) overwrites
+the old persistent config. The file location path was specified prior in the \fIsession.login(3)\fP function parameter.
+.SH "EXCEPTION"
+This function throws an exception if either the allocation of the JSON buffer or the write operation fails.
+.SH RETURN VALUE
+None
+.SH "SEE ALSO"
+.BR session.login "(3), " session.getHandle "(3), " session.verbose "(3), "
+.BR session.changeQuality "(3), " session.clientPair "(3), " session.manualRefresh "(3) "
