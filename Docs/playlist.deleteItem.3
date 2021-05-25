@@ -1,0 +1,24 @@
+.TH playlist.deleteItem 3 "29 Jan 2021" "pyopenTIDAL 1.0.1" "pyopenTIDAL Manual"
+.SH NAME
+playlist.deleteItem \- Delete an artefact from a playlist
+.SH SYNOPSIS
+.B import openTIDAL
+
+.nf
+.BI "class playlist (" object "):"
+.BI "    def deleteItem (" self ", " session ", " contentId ", " index ", " threadHandle ")"
+.fi
+.SH DESCRIPTION
+The OTServiceCreatePlaylist service function creates a new user playlist. The metadata of the newly created playlist will be returned.
+
+.nf
+.B Thread Handle
+.fi
+You must never share the same handle in multiple threads. You can pass the handles around among threads, but you must never use a single handle from more than one thread at any given time.
+
+Call \fIhttp(3)\fP to get the session main handle.
+.SH RETURN VALUE
+\fIenums.status(7)\fP
+.SH "SEE ALSO" 
+.BR json.getObject "(3), " playlist.deleteItem "(3), " playlist.moveItem "(3), "
+.BR playlist.addItem "(3), " playlist.addItems "(3), " session.login "(3) "

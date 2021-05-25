@@ -1,0 +1,38 @@
+.TH search 3 "29 Jan 2021" "pyopenTIDAL 1.0.1" "pyopenTIDAL Manual"
+.SH NAME
+search \- metadata search
+.SH SYNOPSIS
+.B import openTIDAL
+
+.nf
+.BI "class search (" object "):"
+.BI "    def cleanup (" self ", " content ")"
+.BI "    def all (" self ", " session ", " query ", " limit ", " offset ", " threadHandle ")"
+.BI "    def albums (" self ", " session ", " query ", " limit ", " offset ", " threadHandle ")"
+.BI "    def tracks (" self ", " session ", " query ", " limit ", " offset ", " threadHandle ")"
+.BI "    def videos (" self ", " session ", " query ", " limit ", " offset ", " threadHandle ")"
+.BI "    def artists (" self ", " session ", " query ", " limit ", " offset ", " threadHandle ")"
+.BI "    def playlists (" self ", " session ", " query ", " limit ", " offset ", " threadHandle ")"
+.BI "    def topHit (" self ", " session ", " query ", " limit ", " offset ", " threadHandle ")"
+.fi
+.SH DESCRIPTION
+The OTServiceSearch service function requests TIDAL metadata.
+The suffix parameter is used to specify the endpoint of the request.
+This service call \fBmust\fP have a corresponding call to \fIsearch.cleanup(3)\fP when the operation is complete.
+
+.nf
+.B Pagination
+.fi
+Use the limit and offset parameters to control metadata pagination.
+Keep in mind that the TIDAL API will error out on certain limits.
+
+.nf
+.B Thread Handle
+.fi
+You must never share the same handle in multiple threads. You can pass the handles around among threads, but you must never use a single handle from more than one thread at any given time.
+
+Call \fIhttp(3)\fP to get the session main handle.
+.SH RETURN VALUE
+If no memory allocation error occurred in allocating the content container, a
+pointer will be returned.
+Otherwise, an exception is thrown.

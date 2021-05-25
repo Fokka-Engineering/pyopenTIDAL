@@ -1,0 +1,27 @@
+.TH playlist.create 3 "29 Jan 2021" "pyopenTIDAL 1.0.1" "pyopenTIDAL Manual"
+.SH NAME
+playlist.create \- Create a new playlist
+.SH SYNOPSIS
+.B import openTIDAL
+
+.nf
+.BI "class playlist (" object "):"
+.BI "    def create (" self ", " session ", " title ", " description ", " threadHandle ")"
+.fi
+.SH DESCRIPTION
+The OTServiceCreatePlaylist service function creates a new user playlist. The metadata of the newly created playlist will be returned.
+This service call \fBmust\fP have a corresponding call to \fIplaylist.cleanup(3)\fP when the operation is complete.
+
+.nf
+.B Thread Handle
+.fi
+You must never share the same handle in multiple threads. You can pass the handles around among threads, but you must never use a single handle from more than one thread at any given time.
+
+Call \fIhttp(3)\fP to get the session main handle.
+.SH RETURN VALUE
+If no memory allocation error occurred in allocating the content container, a
+pointer will be returned.
+Otherwise, an exception is thrown.
+.SH "SEE ALSO" 
+.BR json.getObject "(3), " playlist.deleteItem "(3), " playlist.moveItem "(3), "
+.BR playlist.addItem "(3), " playlist.addItems "(3), " session.login "(3) "

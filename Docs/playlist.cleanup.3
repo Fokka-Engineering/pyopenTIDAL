@@ -1,0 +1,19 @@
+.TH playlist.cleanup 3 "29 Jan 2021" "pyopenTIDAL 1.0.1" "pyopenTIDAL Manual"
+.SH NAME
+playlist.cleanup \- Deallocate a container from heap 
+.SH SYNOPSIS
+.B import openTIDAL
+
+.nf
+.BI "class playlist (" object "):"
+.BI "    def cleanup (" self ", " content ")"
+.fi
+.SH DESCRIPTION
+After using a OTContainer returned from a service function one needs to deallocate it.
+Up to this point values inside the container are still allocated in heap. The container itself
+is also allocated in heap and needs to be freed.
+.SH RETURN VALUE
+None
+.SH "SEE ALSO" 
+.BR playlist.create "(3), " playlist.deleteItem "(3), " playlist.moveItem "(3), "
+.BR playlist.addItem "(3), " playlist.addItems "(3), " session.login "(3) "

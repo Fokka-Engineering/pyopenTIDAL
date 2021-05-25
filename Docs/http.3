@@ -1,0 +1,22 @@
+.TH http 3 "29 Jan 2021" "pyopenTIDAL 1.0.1" "pyopenTIDAL Manual"
+.SH NAME
+http \- HTTP handle management
+.SH SYNOPSIS
+.B import openTIDAL
+
+.nf
+.BI "class http (" object "):"
+.BI "    def default (" self ")"
+.BI "    def new (" self ")"
+.BI "    def cleanup (" self ", " handle ")"
+.fi
+.SH DESCRIPTION
+If you perform service requests in an additional thread, you \fBmust\fP use a new http-handle.
+However, you can use a handle persistently.
+
+Call http.new to initialise a new http-handle.
+
+http.new \fBmust\fP have a corresponding call to http.cleanup 
+when the operation is complete.
+.SH "SEE ALSO"
+.BR stream.getTrackStream "(3), " session.login "(3), " session.getHandle "(3) "
