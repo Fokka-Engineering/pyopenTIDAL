@@ -1,0 +1,38 @@
+.TH base.getPage 3 "29 Jan 2021" "pyopenTIDAL 1.0.1" "pyopenTIDAL Manual"
+.SH NAME
+base.getPage \- Request dynamic page metadata
+.SH SYNOPSIS
+.B import openTIDAL
+
+.nf
+.BI "class base (" object "):"
+.BI "    def getPage (" self ", " session ", " suffix ", " contentId ", " limit " , " offset " ," threadHandle ")"
+.fi
+.SH DESCRIPTION
+The getPage service function requests TIDAL dynamic page metadata.
+The suffix parameter is used to specify the endpoint of the request.
+This service call \fBmust\fP have a corresponding call to \fIbase.getPage(3)\fP when the operation is complete.
+
+The id parameter is only used with the following suffixes ("album", "artist", "mix").
+Other suffixes: "home", "explore", "videos", "my_collection_my_mixes".
+Other dynamic pages can be requested. Seperate the path from the url ("pages/data/xxxxxxxxx" (Remove "pages/")).
+
+.nf
+.B Pagination
+.fi
+Use the limit and offset parameters to control metadata pagination.
+Keep in mind that the TIDAL API will error out on certain limits.
+
+.nf
+.B Thread Handle
+.fi
+You must never share the same handle in multiple threads. You can pass the handles around among threads, but you must never use a single handle from more than one thread at any given time.
+
+Call \fIhttp.default(3)\fP to get the session main handle.
+.SH RETURN VALUE
+If no memory allocation error occurred in allocating the content container, a
+pointer will be returned.
+Otherwise, an exception is thrown.
+.SH "SEE ALSO"
+.BR base.cleanup "(3), " base.getPage "(3), " base.getPage "(3), "
+.BR stream.getTrackStream "(3), " session.login "(3), " session.getHandle "(3) "

@@ -1,0 +1,21 @@
+.TH json.isRaw 3 "29 Jan 2021" "pyopenTIDAL 1.0.1" "pyopenTIDAL Manual"
+.SH NAME
+json.isRaw \- Check for a raw value
+.SH SYNOPSIS
+.B import openTIDAL
+
+.nf
+.BI "class json (" object "):"
+.BI "    def isRaw (" self ", " jsonContainer ")"
+.fi
+.SH DESCRIPTION
+Check an object for a raw value.
+
+OTJsonRaw represents any kind of JSON that is stored as a zero terminated array of characters in valuestring.
+This can be used, for example, to avoid printing the same static JSON over and over again to save performance.
+OTJson will never create this type when parsing.
+.SH RETURN VALUE
+Returns either 1 or 0 as a boolean.
+.SH "SEE ALSO"
+.BR json.isString "(3), " json.isArray "(3), " json.isBool "(3), "
+.BR json.isNull "(3), " json.isObject "(3), " json.isNumber "(3) "

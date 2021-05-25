@@ -1,0 +1,22 @@
+.TH json.getArrayItem 3 "29 Jan 2021" "pyopenTIDAL 1.0.1" "pyopenTIDAL Manual"
+.SH NAME
+json.getArrayItem \- Get an element at a given index 
+.SH SYNOPSIS
+.B import openTIDAL
+
+.nf
+.BI "class json (" object "):"
+.BI "    def getArrayItem (" self ", " jsonContainer ", " index ")"
+.fi
+.SH DESCRIPTION
+Call this function to get an element at a given index of an array.
+Check if the OTJsonContainer represents an array with \fIjson.isArray(3)\fP.
+
+Because an array is stored as a linked list, iterating it via index is inefficient (O(n2)).
+Interating over an array using the C macro in 0(n) time complexity is not possible due to cffi
+macro incompatibility. You have to use \fIjson.getArraySize(3)\fP and \fIjson.getArrayItem(3)\fP.
+.SH RETURN VALUE
+jsonContainer object.
+.SH "SEE ALSO"
+.BR json.getArraySize "(3), " json.isArray "(3), " json.isObject "(3), "
+.BR json.getObjectItem "(3), " json.getString "(3), " json.getObjectItemString "(3) "

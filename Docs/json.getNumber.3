@@ -1,0 +1,20 @@
+.TH json.getNumber 3 "29 Jan 2021" "pyopenTIDAL 1.0.1" "pyopenTIDAL Manual"
+.SH NAME
+json.getNumber \- Get a number from object
+.SH SYNOPSIS
+.B import openTIDAL
+
+.nf
+.BI "class json (" object "):"
+.BI "    def getNumber (" self ", " jsonContainer ")"
+.fi
+.SH DESCRIPTION
+Get a number from an object that represents a json number.
+Instead of calling \fIjson.getObjectItem(3)\fP use \fIjson.getObjectItemNumber(3)\fP
+to find the object.
+.SH RETURN VALUE
+If the object is a valid number, a double gets returned.
+Otherwise, a NaN gets returned. 
+.SH "SEE ALSO"
+.BR json.getObjectItemString "(3), " json.getObject "(3), " json.getObjectItemNumber "(3), "
+.BR json.getNumber "(3), " json.isObject "(3), " json.hasObjectItem "(3) "

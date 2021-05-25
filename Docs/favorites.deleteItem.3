@@ -1,0 +1,32 @@
+.TH favorites.deleteItem 3 "29 Jan 2021" "pyopenTIDAL 1.0.1" "pyopenTIDAL Manual"
+.SH NAME
+favorites.deleteItem \- Manipulate favorites 
+.SH SYNOPSIS
+.B import openTIDAL
+
+.nf
+.BI "class favorites (" object "):"
+.BI "    def deleteItem (" self ", " session ", " suffix ", " itemId " , " threadHandle ")"
+.fi
+.SH DESCRIPTION
+The favorites.deleteItem service function deletes an artefact from the user-saved content.
+
+To delete an artefact from the collection, call the correct endpoint that represents the type of the
+artefact.
+
+.nf
+.B Suffixes
+.fi
+"albums", "tracks", "videos", "artists", "playlists", "mixes"
+
+.nf
+.B Thread Handle
+.fi
+You must never share the same handle in multiple threads. You can pass the handles around among threads, but you must never use a single handle from more than one thread at any given time.
+
+Call \fIhttp.default(3)\fP to get the session main handle.
+.SH RETURN VALUE
+See \fIenums.status(7)\fP.
+.SH "SEE ALSO"
+.BR favorites.cleanup "(3), " favorites.get "(3), " favorites.addItem "(3), "
+.BR stream.getTrackStream "(3), " stream.getVideoStream "(3), " base.getStandard "(3) "

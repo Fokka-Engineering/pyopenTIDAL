@@ -1,0 +1,19 @@
+.TH json.getObjectItem 3 "29 Jan 2021" "pyopenTIDAL 1.0.1" "pyopenTIDAL Manual"
+.SH NAME
+json.getObjectItem \- Access an item in an object
+.SH SYNOPSIS
+.B import openTIDAL
+
+.nf
+.BI "class json (" object "):"
+.BI "    def getObjectItem (" self ", " jsonContainer ", " string ")"
+.fi
+.SH DESCRIPTION
+If you want to access an item in an object, use this function.
+Use the parent object and the string parameter to find the object.
+This function is standard compliant and follows the JSON standard. It's case sensitive.
+.SH RETURN VALUE
+jsonContainer object.
+.SH "SEE ALSO"
+.BR json.getObjectItemString "(3), " json.getString "(3), " json.getObjectItemNumber "(3), "
+.BR json.getNumber "(3), " json.isObject "(3), " json.hasObjectItem "(3) "

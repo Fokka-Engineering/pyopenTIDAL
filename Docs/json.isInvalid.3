@@ -1,0 +1,18 @@
+.TH json.isInvalid 3 "29 Jan 2021" "pyopenTIDAL 1.0.1" "pyopenTIDAL Manual"
+.SH NAME
+json.isInvalid \- Check for an invalid type
+.SH SYNOPSIS
+.B import openTIDAL
+
+.nf
+.BI "class json (" object "):"
+.BI "    def isInvalid (" self ", " jsonContainer ")"
+.fi
+.SH DESCRIPTION
+Represents an invalid item that doesn't contain any value.
+You automatically have this type if you set the item to all zero bytes.
+.SH RETURN VALUE
+Returns either 1 or 0 as a boolean.
+.SH "SEE ALSO"
+.BR json.isFalse "(3), " json.isTrue "(3), " json.isBool "(3), "
+.BR json.isNull "(3), " json.isObject "(3), " json.isNumber "(3) "

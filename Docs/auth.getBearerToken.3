@@ -20,6 +20,7 @@ is SUCCESS. Remember to deallocate the returned object after each polling-cycle 
 
 This call \fBmust\fP have a corresponding call to \fIauth.cleanup(3)\fP
 when the operation is complete.
+
 .nf
 .B Thread Handle
 .fi
@@ -31,5 +32,5 @@ If no memory allocation error occurred in allocating the content container, a
 pointer will be returned.
 Otherwise, an exception is thrown.
 .SH "SEE ALSO"
-.BR auth.cleanup "(3), " auth.getDeviceCode "(3), " auth::logout "(3), "
+.BR auth.cleanup "(3), " auth.getDeviceCode "(3), " auth.logout "(3), "
 .BR auth.refreshBearerToken "(3), " session.login "(3), " session.getHandle "(3) "

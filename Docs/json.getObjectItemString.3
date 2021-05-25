@@ -1,0 +1,23 @@
+.TH json.getObjectItemString 3 "29 Jan 2021" "pyopenTIDAL 1.0.1" "pyopenTIDAL Manual"
+.SH NAME
+json.getObjectItemString \- Get an object and its string
+.SH SYNOPSIS
+.B import openTIDAL
+
+.nf
+.BI "class json (" object "):"
+.BI "    def getObjectItemString (" self ", " jsonContainer ", " string ")"
+.fi
+.SH DESCRIPTION
+Get an ASCII string from an object that represents a json string.
+Use the parent object and the string parameter to find the object.
+
+DO NOT deallocate the ASCII string manually.
+Cleanup functions handle jsonContainer tree deallocation
+by iterating over the tree and its values.
+.SH RETURN VALUE
+If the object is a valid string, an ASCII string gets returned.
+Otherwise, None gets returned.
+.SH "SEE ALSO"
+.BR json.getObjectItemNumber "(3), " json.getString "(3), " json.getObjectItem "(3), "
+.BR json.getNumber "(3), " json.isObject "(3), " json.hasObjectItem "(3) "
