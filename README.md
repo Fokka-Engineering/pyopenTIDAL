@@ -74,6 +74,8 @@ On CentOS:
 $ dnf install libcurl-devel
 ```
 
+pyopenTIDAL uses the cffi module. This module requires a working C compiler if you build pyopenTIDAL from source.
+
 ## Disclaimer
 
 I deeply discourage you from building and distributing copyright-infringing apps. Create something that adds up to TIDAL's Service.
