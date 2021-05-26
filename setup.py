@@ -11,7 +11,7 @@ setuptools.setup(
 	license = "MIT",
 	description = "Python Wrapper for libopenTIDAL",
 	author = "DerNuntius",
-	author_email = "hugo.melder@gmail.com",
+	author_email = "contact@nuntius.dev",
 	long_description=long_description,
 	long_description_content_type='text/markdown',
 	packages = setuptools.find_packages(),
